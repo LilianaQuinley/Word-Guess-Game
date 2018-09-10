@@ -16,8 +16,9 @@ h1 { background-color: yellow;
     flex: 50%;
 }
 
-#leftImg {
+.Img {
     background: BLACK;
+    align-content: center; 
 }
 
 p {

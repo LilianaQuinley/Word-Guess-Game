@@ -1,6 +1,6 @@
 console.log ("hola")
 
-var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta"];
+var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta", "computador", "perro"];
 var guessesleft = 12;
 var dash = "";
 var guessedLetter = []
@@ -9,27 +9,39 @@ var guessedLetter = []
 // DRAW A DASH FOR THE MISSING LETTER 
 
 var pickaWord = wordlist[Math.floor(Math.random() * wordlist.length)]
-console.log("choosen word is "+ pickaWord)
 
-console.log("the length of the word is " + pickaWord.length)
-
-for (var i=0; i < pickaWord.length ; i = i+1) {
-    dash = dash  + "_ ";
-
-    console.log(dash);
-    console.log("In my loop " + i + " " + pickaWord.charAt(i));
-} 
+dash = getDashAndLetters(pickaWord, guessedLetter)
 document.getElementById("dash").innerHTML = dash; 
 
 console.log("This is the end " + dash)
+
+///GUESSED WORD
+// word The word the game is using right now, such as carro
+//  chosenLetters A list of key's pressed, such as ["a", "n", "z"]
+//  * @returns A string with dashes on letters not guessed and the guessed characters
+//  * For the above cases, it would return _ a r r _
+
+
+function getDashAndLetters (word, chosenLetters) {
+    var result = "";
+    for (i=0; i<word.length; i++) {
+
+        if ( chosenLetters.includes(word.charAt(i))) {
+            result = result + word.charAt(i) + " ";
+        }
+        else {
+            result = result + "_ "
+        }
+    }
+    return result;
+}
+
 
 // LISTEN THE KEY PRESSED
 
 // If the guessedLetter is not in the array then substract and type letter.
 // If the guessedLetter is already in the array then no type. 
 // COUNTING DOWN THE letters guessed
-
-
 
 document.onkeypress = function(e) { 
 
@@ -43,12 +55,8 @@ document.onkeypress = function(e) {
             guessedLetter[guessedLetter.length]=e.key;
             console.log(guessedLetter);
             document.getElementById("GuessedLetters").innerHTML = guessedLetter;
-
-            if (pickaWord.includes(e.key)) {
-                console.log("is included in word " + e.key);
-                console.log(pickaWord);
-                document.getElementById("word").innerHTML = pickaWord;
-            }
+            dash = getDashAndLetters(pickaWord, guessedLetter);
+            document.getElementById("dash").innerHTML = dash; 
         }      
     }
     else {
@@ -76,7 +84,6 @@ function StartNewGame(){
     document.getElementById("dash").innerHTML = dash; 
     document.getElementById("countDown").innerHTML = guessesleft; 
     document.getElementById("GuessedLetters").innerHTML = guessedLetter;
-    document.getElementById("word").innerHTML = pickaWord;
 }
 
 //     document.onkeypressl = function(e) { 
@@ -85,11 +92,7 @@ function StartNewGame(){
 //     console.log(guessedLetter)
 //     document.getElementById("GuessedLetters").innerHTML = guessedLetter;
 
-// }
+// 
 
 
-
-
-
-
-
+ 
