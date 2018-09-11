@@ -1,15 +1,17 @@
 console.log ("hola")
 
-var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta", "computador", "perro"];
+var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta", "computador", "perro", "cocina", "cuchara", "escuela","estudiante","gato"];
+var images = ["assets/images/cat.jpg", "assets/images/bicycle.jpeg", "assets/images/car.jpeg", "assets/images/dog.jpg","assets/images/hat.jpeg","assets/images/house.jpeg", "assets/images/tree.jpeg"]
 var guessesleft = 12;
 var dash = "";
 var guessedLetter = []
+var wins = 0;
 
 
 // DRAW A DASH FOR THE MISSING LETTER 
 
 var pickaWord = wordlist[Math.floor(Math.random() * wordlist.length)]
-
+var pickaImage = images[Math.floor(Math.random() * images.length)]
 dash = getDashAndLetters(pickaWord, guessedLetter)
 document.getElementById("dash").innerHTML = dash; 
 
@@ -57,12 +59,24 @@ document.onkeypress = function(e) {
             document.getElementById("GuessedLetters").innerHTML = guessedLetter;
             dash = getDashAndLetters(pickaWord, guessedLetter);
             document.getElementById("dash").innerHTML = dash; 
+            Winner()
         }      
     }
     else {
         alert ("Start a New Game!")
     }
 }
+
+/// win counting
+
+    function Winner () {
+        if (!dash.includes("_")) {
+            wins++;
+            document.getElementById("WinsCounts").innerHTML = "WINS " + "<br>"+ wins;
+            guessesleft=0;
+        }
+    }
+
 
 // start new game
 
@@ -84,6 +98,7 @@ function StartNewGame(){
     document.getElementById("dash").innerHTML = dash; 
     document.getElementById("countDown").innerHTML = guessesleft; 
     document.getElementById("GuessedLetters").innerHTML = guessedLetter;
+
 }
 
 //     document.onkeypressl = function(e) { 
@@ -92,7 +107,16 @@ function StartNewGame(){
 //     console.log(guessedLetter)
 //     document.getElementById("GuessedLetters").innerHTML = guessedLetter;
 
-// 
+//** SELECT NEW IMAGE CLICKING THE IMAGE 
+
+    function ChangeImg () {
+        var pickaImage = images[Math.floor(Math.random() * images.length)];
+        document.getElementById("image").src= pickaImage;
+       
+    }
+    
+ 
+
 
 
  
