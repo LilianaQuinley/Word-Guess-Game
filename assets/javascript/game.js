@@ -1,7 +1,7 @@
 console.log ("hola")
 
-var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta", "computador", "perro", "cocina", "cuchara", "escuela","estudiante","gato"];
-var images = ["assets/images/cat.jpg", "assets/images/bicycle.jpeg", "assets/images/car.jpeg", "assets/images/dog.jpg","assets/images/hat.jpeg","assets/images/house.jpeg", "assets/images/tree.jpeg"]
+var wordlist = ["arbol", "sombrero", "casa", "carro", "bicicleta", "computador", "perro", "escuela","gato","table"];
+var images = ["assets/images/cat.jpg", "assets/images/bicycle.jpeg", "assets/images/computer.jpeg", "assets/images/car.jpeg", "assets/images/dog.jpg","assets/images/hat.jpeg","assets/images/house.jpeg", "assets/images/tree.jpeg", "assets/images/school.jpeg",  "assets/images/table.jpeg"]
 var guessesleft = 12;
 var dash = "";
 var guessedLetter = []
